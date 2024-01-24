@@ -1,13 +1,21 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT;
+
+// cors set
+app.use(cors());
+// parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE_URL);
 
 
 const axios = require('axios');
+const { parse } = require('dotenv');
 
 const cryptoSchema = new mongoose.Schema({
     name: String,
