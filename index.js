@@ -20,6 +20,10 @@ const cryptoSchema = new mongoose.Schema({
 
 const Crypto = mongoose.model('Crypto', cryptoSchema);
 
+app.get('/', (req, res) => {
+    res.send("Server is running successfully.");
+});
+
 app.get('/store-to-db', async (req, res) => {
     try {
         const response = await axios.get('https://api.wazirx.com/api/v2/tickers');
